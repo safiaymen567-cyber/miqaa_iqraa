@@ -1,0 +1,2063 @@
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مقرأة اقرأ وارتقِ الإلكترونية | المنصة القرآنية التعليمية الشاملة</title>
+  
+  <!-- Fonts: Cairo & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#0a4930',
+              greenDark: '#063321',
+              greenLight: '#116846',
+              gold: '#c49a37',
+              goldLight: '#e4bf63',
+              goldDark: '#99731d',
+              rose: '#962b49',
+              roseDark: '#6f1d34',
+              cream: '#fbf9f4',
+              sand: '#f2ede2',
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            quran: ['Amiri', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #faf7f0;
+      color: #262626;
+      scroll-behavior: smooth;
+    }
+    
+    .font-quran {
+      font-family: 'Amiri', serif;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1ede2;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c49a37;
+      border-radius: 4px;
+    }
+
+    /* Islamic Pattern Background */
+    .bg-islamic-pattern {
+      background-color: #fbf9f4;
+      background-image: radial-gradient(#c49a37 0.75px, transparent 0.75px), radial-gradient(#0a4930 0.75px, #fbf9f4 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      background-opacity: 0.05;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(10, 73, 48, 0.96) 0%, rgba(6, 51, 33, 0.98) 100%);
+    }
+
+    .gold-border-gradient {
+      border-image: linear-gradient(to right, #c49a37, #f3d789, #c49a37) 1;
+    }
+
+    .gold-text-gradient {
+      background: linear-gradient(135deg, #e4bf63 0%, #c49a37 50%, #99731d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge-card {
+      background: radial-gradient(circle at top right, #ffffff, #fcf9f2);
+      box-shadow: 0 10px 25px -5px rgba(10, 73, 48, 0.1), 0 8px 10px -6px rgba(196, 154, 55, 0.1);
+    }
+
+    /* Print styling for ID Card */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #studentJourneyCardPrint, #studentJourneyCardPrint * {
+        visibility: visible;
+      }
+      #studentJourneyCardPrint {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-neutral-800 antialiased selection:bg-brand-gold selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-brand-greenDark text-brand-goldLight text-xs md:text-sm py-2 px-4 border-b border-brand-gold/30">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center space-x-2 space-x-reverse">
+        <span class="bg-brand-rose text-white text-[11px] px-2 py-0.5 rounded-full font-bold animate-pulse">تنبيه هام</span>
+        <span>بدء التسجيل للفوج القرآني الجديد لعام 1446هـ - مسار الإتقان والإجازة بالسند المتصل</span>
+      </div>
+      <div class="flex items-center space-x-4 space-x-reverse text-xs">
+        <a href="#library" class="hover:text-white transition"><i class="fa-solid fa-book-quran ml-1"></i>المكتبة القرآنية</a>
+        <span class="text-brand-gold/50">|</span>
+        <button onclick="openModal('loginModal')" class="hover:text-white transition font-bold"><i class="fa-solid fa-arrow-right-to-bracket ml-1"></i>بوابة المنظومة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-brand-sand">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Brand Logo & Name -->
+        <a href="#" onclick="showSection('homeSection')" class="flex items-center gap-3 group">
+          <div class="relative w-14 h-14 rounded-full overflow-hidden p-0.5 border-2 border-brand-gold bg-white shadow-md flex-shrink-0 transition-transform group-hover:scale-105">
+            <img src="https://www.designarena.ai/u/6793860c-05b2-47bd-858f-b19ac9c9eb33" alt="شعار مقرأة اقرأ وارتقِ" class="w-full h-full object-cover">
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl md:text-2xl font-black text-brand-green font-quran leading-tight group-hover:text-brand-greenLight transition">
+              مقرأة اقرأ وارتقِ
+            </span>
+            <span class="text-xs text-brand-rose font-bold tracking-wider">الإلكترونية العالمية</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 space-x-reverse text-sm font-semibold">
+          <button onclick="showSection('homeSection')" class="nav-link px-3 py-2 text-brand-green hover:text-brand-gold rounded-lg transition active-nav">الرئيسية</button>
+          <a href="#about" onclick="showSection('homeSection')" class="nav-link px-3 py-2 text-neutral-600 hover:text-brand-green rounded-lg transition">عن المقرأة</a>
+          <a href="#tracks" onclick="showSection('homeSection')" class="nav-link px-3 py-2 text-neutral-600 hover:text-brand-green rounded-lg transition">المسارات القرآنية</a>
+          <button onclick="showSection('librarySection')" class="nav-link px-3 py-2 text-neutral-600 hover:text-brand-green rounded-lg transition">المكتبة الرقمية</button>
+          <button onclick="showSection('journeySection')" class="nav-link px-3 py-2 text-neutral-600 hover:text-brand-green rounded-lg transition">مسار الطالبة</button>
+          <button onclick="showSection('cardGeneratorSection')" class="nav-link px-3 py-2 text-neutral-600 hover:text-brand-green rounded-lg transition">بطاقة الإنجاز</button>
+          <a href="#stats" onclick="showSection('homeSection')" class="nav-link px-3 py-2 text-neutral-600 hover:text-brand-green rounded-lg transition">الإحصائيات</a>
+        </nav>
+
+        <!-- Action / Login Buttons -->
+        <div class="hidden sm:flex items-center gap-3">
+          <button onclick="openModal('loginModal')" class="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition duration-200 border border-brand-gold/40">
+            <i class="fa-solid fa-user-lock text-brand-gold"></i>
+            <span>تسجيل الدخول</span>
+          </button>
+          <button onclick="quickRoleSwitch('admin')" class="inline-flex items-center gap-1.5 bg-brand-sand hover:bg-amber-100 text-brand-greenDark px-3.5 py-2 rounded-full text-xs font-bold border border-brand-gold/30 transition">
+            <i class="fa-solid fa-gauge-high text-brand-gold"></i>
+            <span>تجربة المنظومة</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="flex items-center lg:hidden gap-2">
+          <button onclick="openModal('loginModal')" class="bg-brand-green text-white p-2.5 rounded-lg text-xs">
+            <i class="fa-solid fa-user-lock"></i>
+          </button>
+          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="text-neutral-700 hover:text-brand-green p-2 focus:outline-none">
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-brand-sand px-4 pt-2 pb-6 space-y-2">
+      <button onclick="showSection('homeSection'); toggleMobileMenu()" class="block w-full text-right py-2 px-3 rounded-lg hover:bg-brand-sand/50 font-bold text-brand-green">الرئيسية</button>
+      <a href="#about" onclick="showSection('homeSection'); toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-brand-sand/50 text-neutral-700">عن المقرأة</a>
+      <a href="#tracks" onclick="showSection('homeSection'); toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-brand-sand/50 text-neutral-700">المسارات القرآنية</a>
+      <button onclick="showSection('librarySection'); toggleMobileMenu()" class="block w-full text-right py-2 px-3 rounded-lg hover:bg-brand-sand/50 text-neutral-700">المكتبة الرقمية</button>
+      <button onclick="showSection('journeySection'); toggleMobileMenu()" class="block w-full text-right py-2 px-3 rounded-lg hover:bg-brand-sand/50 text-neutral-700">مسار الطالبة التفاعلي</button>
+      <button onclick="showSection('cardGeneratorSection'); toggleMobileMenu()" class="block w-full text-right py-2 px-3 rounded-lg hover:bg-brand-sand/50 text-neutral-700">مولد بطاقة الطالبة</button>
+      <div class="pt-3 border-t border-brand-sand flex flex-col gap-2">
+        <button onclick="openModal('loginModal'); toggleMobileMenu()" class="w-full bg-brand-green text-white py-2.5 rounded-xl font-bold flex justify-center items-center gap-2">
+          <i class="fa-solid fa-user-lock"></i> تسجيل الدخول
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NOTIFICATION TOAST (Dynamic) -->
+  <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-neutral-900 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 border-r-4 border-brand-gold">
+    <div id="toastIcon" class="text-brand-gold text-lg"><i class="fa-solid fa-check-circle"></i></div>
+    <div id="toastMessage" class="text-sm font-medium">تمت العملية بنجاح!</div>
+  </div>
+
+  <!-- MAIN APPLICATION CONTAINER -->
+  <main id="mainAppContainer">
+
+    <!-- ==================== 1. HOME SECTION ==================== -->
+    <div id="homeSection" class="site-section">
+      <!-- HERO SECTION -->
+      <section class="relative overflow-hidden hero-gradient text-white py-16 md:py-24">
+        <!-- Decorative Islamic Arch Background SVG overlay -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none flex justify-center items-center">
+          <svg class="w-[800px] h-[800px]" viewBox="0 0 200 200" fill="none" stroke="currentColor">
+            <path d="M100 20 C 60 20 30 60 30 110 L 30 180 L 170 180 L 170 110 C 170 60 140 20 100 20 Z" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="100" cy="95" r="45" stroke-width="1" />
+          </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left/Main Text Column -->
+            <div class="lg:col-span-7 text-center lg:text-right space-y-6">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-brand-gold/40 text-brand-goldLight text-xs md:text-sm font-semibold backdrop-blur-sm">
+                <i class="fa-solid fa-star-and-crescent text-brand-gold"></i>
+                <span>قال ﷺ: «خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»</span>
+              </div>
+              
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-quran leading-tight tracking-wide">
+                مقرأة <span class="gold-text-gradient">اقرأ وارتقِ</span> الإلكترونية
+              </h1>
+              
+              <p class="text-brand-sand text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                صرحٌ قرآني رائد يُعنى بتعليم كتاب الله عز وجل حفظاً، وتجويداً، وتدبراً، وإسناداً بروايات القرآن المتواترة، بإشراف نخبة من المعلمات المجازات، ومنظومة رقمية ذكية تضمن متابعة دقيقة لمسار كل طالبة.
+              </p>
+
+              <!-- CTA Buttons -->
+              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                <button onclick="openModal('loginModal')" class="bg-gradient-to-r from-brand-gold to-brand-goldLight text-brand-greenDark font-bold px-7 py-3.5 rounded-xl shadow-lg hover:shadow-brand-gold/30 hover:scale-105 transition transform flex items-center gap-2.5">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>الانضمام للمقرأة والمسار</span>
+                </button>
+                <button onclick="showSection('journeySection')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl backdrop-blur-sm border border-white/20 transition flex items-center gap-2">
+                  <i class="fa-solid fa-compass"></i>
+                  <span>استكشاف مسار الطالبة</span>
+                </button>
+              </div>
+
+              <!-- Quick Highlights -->
+              <div class="grid grid-cols-3 gap-3 pt-6 border-t border-white/10 text-center lg:text-right">
+                <div class="bg-white/5 p-3 rounded-lg border border-white/5">
+                  <div class="text-brand-gold text-lg font-bold">100%</div>
+                  <div class="text-xs text-neutral-300">عن بُعد بمرونة تامة</div>
+                </div>
+                <div class="bg-white/5 p-3 rounded-lg border border-white/5">
+                  <div class="text-brand-gold text-lg font-bold">إجازات</div>
+                  <div class="text-xs text-neutral-300">بالسند المتصل للنبي ﷺ</div>
+                </div>
+                <div class="bg-white/5 p-3 rounded-lg border border-white/5">
+                  <div class="text-brand-gold text-lg font-bold">بطاقة رقمية</div>
+                  <div class="text-xs text-neutral-300">توثيق رحلة الإنجاز</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column - Visual Logo Showcase -->
+            <div class="lg:col-span-5 flex justify-center">
+              <div class="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96">
+                <!-- Glowing Outer Rings -->
+                <div class="absolute inset-0 rounded-full border-2 border-dashed border-brand-gold/40 animate-spin" style="animation-duration: 25s;"></div>
+                <div class="absolute -inset-3 rounded-full bg-brand-gold/10 blur-xl"></div>
+                
+                <!-- Central Emblem Card -->
+                <div class="relative w-full h-full rounded-full bg-white shadow-2xl p-4 flex items-center justify-center border-4 border-brand-gold">
+                  <img src="https://www.designarena.ai/u/6793860c-05b2-47bd-858f-b19ac9c9eb33" alt="شعار مقرأة اقرأ وارتقِ الرسمية" class="w-full h-full object-contain rounded-full shadow-inner">
+                </div>
+
+                <!-- Floating Badges -->
+                <div class="absolute -bottom-3 -right-2 bg-brand-rose text-white text-xs px-3.5 py-2 rounded-2xl shadow-lg border border-brand-sand flex items-center gap-2">
+                  <i class="fa-solid fa-award text-brand-gold"></i>
+                  <span class="font-bold">حلقات مخصصة للنساء والفتيات</span>
+                </div>
+                <div class="absolute -top-3 -left-2 bg-brand-greenDark text-brand-gold text-xs px-3 py-1.5 rounded-2xl shadow-lg border border-brand-gold flex items-center gap-1.5">
+                  <i class="fa-solid fa-certificate"></i>
+                  <span>اعتماد وإتقان</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS COUNTER BAR -->
+      <section id="stats" class="py-10 bg-white border-b border-brand-sand relative z-20 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            
+            <div class="p-4 rounded-2xl bg-brand-cream border border-brand-gold/20 hover:border-brand-gold transition duration-300">
+              <div class="text-brand-green text-3xl font-extrabold mb-1 font-quran">1,450+</div>
+              <div class="text-neutral-600 text-sm font-semibold flex items-center justify-center gap-1">
+                <i class="fa-solid fa-users text-brand-gold text-xs"></i>
+                <span>طالبة مستفيدة</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-brand-cream border border-brand-gold/20 hover:border-brand-gold transition duration-300">
+              <div class="text-brand-rose text-3xl font-extrabold mb-1 font-quran">48+</div>
+              <div class="text-neutral-600 text-sm font-semibold flex items-center justify-center gap-1">
+                <i class="fa-solid fa-chalkboard-user text-brand-gold text-xs"></i>
+                <span>أستاذة ومجازة</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-brand-cream border border-brand-gold/20 hover:border-brand-gold transition duration-300">
+              <div class="text-brand-goldDark text-3xl font-extrabold mb-1 font-quran">320+</div>
+              <div class="text-neutral-600 text-sm font-semibold flex items-center justify-center gap-1">
+                <i class="fa-solid fa-crown text-brand-gold text-xs"></i>
+                <span>خاتمة لكتاب الله</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-brand-cream border border-brand-gold/20 hover:border-brand-gold transition duration-300">
+              <div class="text-brand-greenLight text-3xl font-extrabold mb-1 font-quran">85+</div>
+              <div class="text-neutral-600 text-sm font-semibold flex items-center justify-center gap-1">
+                <i class="fa-solid fa-book-open text-brand-gold text-xs"></i>
+                <span>حلقة يومية وأسبوعية</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT & ACADEMY GOALS -->
+      <section id="about" class="py-16 md:py-24 bg-islamic-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-brand-rose font-bold text-sm tracking-widest uppercase">الرسالة والرؤية السامية</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-brand-green font-quran mt-2">
+              لماذا تختارين مقرأة اقرأ وارتقِ؟
+            </h2>
+            <div class="w-24 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+            <p class="text-neutral-600 mt-4 leading-relaxed">
+              نهدف إلى إتاحة فرصة حفظ وإتقان القرآن الكريم لكل راغبة أينما كانت، وفق خطط مدروسة وبأحدث الوسائل التفاعلية الذكية لتثبيت الحفظ وتحقيق الارتقاء القرآني الحقيقي.
+            </p>
+          </div>
+
+          <!-- Feature Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-brand-sand hover:shadow-xl hover:-translate-y-1.5 transition duration-300 flex flex-col items-start relative overflow-hidden group">
+              <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-green group-hover:text-white transition duration-300">
+                <i class="fa-solid fa-quran"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-greenDark mb-3">حفظ متقن ومنهجي</h3>
+              <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                تطبيق منهجية الحفظ الراسخ عبر الربط اليومي والمراجعة الصغرى والكبرى مع تصحيح التلاوة وأحكام التجويد بدقة من مخارج الحروف وصفاتها.
+              </p>
+              <ul class="text-xs text-neutral-500 space-y-2 mt-auto">
+                <li><i class="fa-solid fa-check text-brand-gold ml-2"></i>خطط حفظ فردية وجماعية</li>
+                <li><i class="fa-solid fa-check text-brand-gold ml-2"></i>اختبارات دورية للأجزاء</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-brand-sand hover:shadow-xl hover:-translate-y-1.5 transition duration-300 flex flex-col items-start relative overflow-hidden group">
+              <div class="w-14 h-14 rounded-2xl bg-amber-50 text-brand-goldDark flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-white transition duration-300">
+                <i class="fa-solid fa-id-card-clip"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-greenDark mb-3">توثيق مسار الطالبة الذكي</h3>
+              <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                نظام إلكتروني فريد يسجل بدقة كل شوط تقطعه الطالبة مع بطاقة تفاعلية رقمية تحوي مستواها، تقييماتها، ومواعيد جلساتها قابلة للتصدير.
+              </p>
+              <ul class="text-xs text-neutral-500 space-y-2 mt-auto">
+                <li><i class="fa-solid fa-check text-brand-gold ml-2"></i>بطاقة إلكترونية معتمدة برمز QR</li>
+                <li><i class="fa-solid fa-check text-brand-gold ml-2"></i>لوحة متابعة فورية لولي الأمر أو الطالبة</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-brand-sand hover:shadow-xl hover:-translate-y-1.5 transition duration-300 flex flex-col items-start relative overflow-hidden group">
+              <div class="w-14 h-14 rounded-2xl bg-rose-50 text-brand-rose flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-rose group-hover:text-white transition duration-300">
+                <i class="fa-solid fa-scroll"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-greenDark mb-3">إجازات بالسند المتصل</h3>
+              <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                مسار خاص للخاتمات لضبط الروايات (حفص، ورش، قالون وغيرها) وعرض القرآن الكريم كاملاً للحصول على الإجازة المعتمدة.
+              </p>
+              <ul class="text-xs text-neutral-500 space-y-2 mt-auto">
+                <li><i class="fa-solid fa-check text-brand-gold ml-2"></i>نخبة من كبار المقرئات المجازات</li>
+                <li><i class="fa-solid fa-check text-brand-gold ml-2"></i>مجالس سماع وإقراء منتظمة</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- TRACKS & ACADEMY SYSTEM -->
+      <section id="tracks" class="py-16 bg-white border-y border-brand-sand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+            <div>
+              <span class="text-brand-rose font-bold text-sm tracking-wider">نظام الأفواج والمسارات التعليمية</span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-brand-green font-quran mt-1">
+                مسارات تلائم جميع المستويات والأعمار
+              </h2>
+            </div>
+            <button onclick="openModal('loginModal')" class="mt-4 md:mt-0 text-sm font-bold text-brand-green hover:text-brand-gold transition flex items-center gap-2">
+              <span>الانضمام لفوجك المفضل</span>
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Track 1 -->
+            <div class="border border-brand-sand rounded-2xl p-6 bg-brand-cream/50 hover:border-brand-green transition group">
+              <div class="text-xs font-bold text-brand-rose mb-2">المسار الأول</div>
+              <h3 class="text-lg font-bold text-brand-greenDark mb-2">مسار الحفظ التأسيسي</h3>
+              <p class="text-xs text-neutral-600 mb-4 leading-relaxed">
+                مخصص للمبتدئات من جزء عمّ حتى البقرة، مع التركيز على التلقين الصحيح ومخارج الحروف.
+              </p>
+              <div class="bg-white p-3 rounded-xl border border-brand-sand text-xs space-y-1.5 mb-4">
+                <div class="flex justify-between"><span class="text-neutral-500">الجلسات:</span><span class="font-bold">3 جلسات أسبوعياً</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500">المدة المتوقعة:</span><span class="font-bold">سنتان كاملتان</span></div>
+              </div>
+              <button onclick="quickRoleSwitch('student')" class="w-full py-2 bg-brand-green/10 hover:bg-brand-green hover:text-white text-brand-green text-xs font-bold rounded-lg transition">استعراض المنهج</button>
+            </div>
+
+            <!-- Track 2 -->
+            <div class="border-2 border-brand-gold rounded-2xl p-6 bg-amber-50/20 relative group shadow-sm">
+              <span class="absolute -top-3 left-4 bg-brand-gold text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">الأكثر طلباً</span>
+              <div class="text-xs font-bold text-brand-goldDark mb-2">المسار الثاني</div>
+              <h3 class="text-lg font-bold text-brand-greenDark mb-2">مسار التثبيت والإتقان</h3>
+              <p class="text-xs text-neutral-600 mb-4 leading-relaxed">
+                للحافظات اللاتي يرغبن في تثبيت حفظهن وضبط المتشابهات اللفظية وتجويد الآيات بصورة تامة.
+              </p>
+              <div class="bg-white p-3 rounded-xl border border-amber-200 text-xs space-y-1.5 mb-4">
+                <div class="flex justify-between"><span class="text-neutral-500">الجلسات:</span><span class="font-bold">يومياً عدا الجمعة</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500">معدل العرض:</span><span class="font-bold">حزب إلى جزء يومياً</span></div>
+              </div>
+              <button onclick="quickRoleSwitch('student')" class="w-full py-2 bg-brand-gold hover:bg-brand-goldDark text-white text-xs font-bold rounded-lg transition">استعراض المنهج</button>
+            </div>
+
+            <!-- Track 3 -->
+            <div class="border border-brand-sand rounded-2xl p-6 bg-brand-cream/50 hover:border-brand-green transition group">
+              <div class="text-xs font-bold text-brand-rose mb-2">المسار الثالث</div>
+              <h3 class="text-lg font-bold text-brand-greenDark mb-2">مسار الإجازة بالسند</h3>
+              <p class="text-xs text-neutral-600 mb-4 leading-relaxed">
+                قراءة القرآن كاملاً غيباً من حفظ الصدر على شيخة مجازة برواية حفص أو ورش والحصول على السند.
+              </p>
+              <div class="bg-white p-3 rounded-xl border border-brand-sand text-xs space-y-1.5 mb-4">
+                <div class="flex justify-between"><span class="text-neutral-500">الجلسات:</span><span class="font-bold">جلسات فردية خاصة</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500">الشرط:</span><span class="font-bold">إتقان المصحف كاملاً</span></div>
+              </div>
+              <button onclick="quickRoleSwitch('teacher')" class="w-full py-2 bg-brand-green/10 hover:bg-brand-green hover:text-white text-brand-green text-xs font-bold rounded-lg transition">استعراض المنهج</button>
+            </div>
+
+            <!-- Track 4 -->
+            <div class="border border-brand-sand rounded-2xl p-6 bg-brand-cream/50 hover:border-brand-green transition group">
+              <div class="text-xs font-bold text-brand-rose mb-2">المسار الرابع</div>
+              <h3 class="text-lg font-bold text-brand-greenDark mb-2">مسار الفتيات والناشئة</h3>
+              <p class="text-xs text-neutral-600 mb-4 leading-relaxed">
+                أساليب تحفيزية وتربوية تفاعلية تناسب الأعمار من 8 حتى 15 سنة مع غرس معاني الآيات.
+              </p>
+              <div class="bg-white p-3 rounded-xl border border-brand-sand text-xs space-y-1.5 mb-4">
+                <div class="flex justify-between"><span class="text-neutral-500">الجلسات:</span><span class="font-bold">يومان في الأسبوع</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500">الوسائل:</span><span class="font-bold">مسابقات ونقاط تحفيز</span></div>
+              </div>
+              <button onclick="quickRoleSwitch('student')" class="w-full py-2 bg-brand-green/10 hover:bg-brand-green hover:text-white text-brand-green text-xs font-bold rounded-lg transition">استعراض المنهج</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS / QUOTES -->
+      <section class="py-16 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold font-quran text-brand-green">أصداء من مسيرة طالباتنا الخاتمات</h2>
+            <p class="text-xs md:text-sm text-neutral-600 mt-2">كلمات من قلوب عاشت مع كتاب الله ونالت شرف الإتقان داخل المقرأة</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-sand relative">
+              <i class="fa-solid fa-quote-right text-brand-gold/30 text-4xl absolute top-4 left-4"></i>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center font-bold">ف.ع</div>
+                <div>
+                  <h4 class="font-bold text-sm text-brand-greenDark">فاطمة علي</h4>
+                  <span class="text-xs text-neutral-500">خاتمة برواية حفص عن عاصم</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-600 leading-relaxed">
+                "كانت رحلتي في مقرأة اقرأ وارتقِ بمثابة نقطة التحول الكبرى في حياتي، التزام المعلمات وتوجيههن الدقيق ومتابعة مسار الحفظ عبر البطاقة الرقمية جعل الهدف قريب المنال."
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-sand relative">
+              <i class="fa-solid fa-quote-right text-brand-gold/30 text-4xl absolute top-4 left-4"></i>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-full bg-brand-rose/10 text-brand-rose flex items-center justify-center font-bold">م.س</div>
+                <div>
+                  <h4 class="font-bold text-sm text-brand-greenDark">مريم السالم</h4>
+                  <span class="text-xs text-neutral-500">مسار التثبيت المتقدم</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-600 leading-relaxed">
+                "كنت أحفظ القرآن مسبقاً لكن المتشابهات كانت عقبتي، بفضل خطة التثبيت الصارمة والامتحانات المستمرة تلاشت كل الحيرة وأصبح حفظي كالفاتحة ولله الحمد."
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-sand relative">
+              <i class="fa-solid fa-quote-right text-brand-gold/30 text-4xl absolute top-4 left-4"></i>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-full bg-amber-100 text-brand-goldDark flex items-center justify-center font-bold">س.م</div>
+                <div>
+                  <h4 class="font-bold text-sm text-brand-greenDark">سارة محمود</h4>
+                  <span class="text-xs text-neutral-500">مجازة بالسند المتصل</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-600 leading-relaxed">
+                "نظام رائع بكل المقاييس، سهولة الدخول للحلقات الافتراضية، وسرعة استخراج بطاقة الإنجاز الموثقة التي أعتز بها جداً."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== 2. DIGITAL LIBRARY SECTION ==================== -->
+    <div id="librarySection" class="site-section hidden">
+      <div class="bg-brand-greenDark text-white py-12 px-4 border-b border-brand-gold/30">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <div>
+            <span class="text-brand-gold font-bold text-xs uppercase tracking-wider">المرجع العلمي والمعرفي</span>
+            <h1 class="text-3xl font-extrabold font-quran mt-1">المكتبة القرآنية والتعليمية</h1>
+            <p class="text-brand-sand text-sm mt-2 max-w-xl">
+              مكتبة إلكترونية شاملة تضم المصاحف المرتلة، متون التجويد والقراءات، كتب المتشابهات، وجداول المراجعة القابلة للتحميل.
+            </p>
+          </div>
+          <!-- Search box -->
+          <div class="w-full md:w-80">
+            <div class="relative">
+              <input type="text" id="librarySearchInput" onkeyup="filterLibrary()" placeholder="ابحث عن كتاب، تلاوة، أو متن..." class="w-full py-2.5 pr-10 pl-4 rounded-xl text-neutral-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold">
+              <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-neutral-400 text-sm"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 mb-8 border-b border-brand-sand pb-4">
+          <button onclick="filterLibraryCategory('all')" class="lib-tab-btn active bg-brand-green text-white text-xs font-bold px-4 py-2 rounded-xl transition">الكل</button>
+          <button onclick="filterLibraryCategory('tajweed')" class="lib-tab-btn bg-white text-neutral-700 hover:bg-brand-sand text-xs font-bold px-4 py-2 rounded-xl transition border border-brand-sand">متون التجويد</button>
+          <button onclick="filterLibraryCategory('quran')" class="lib-tab-btn bg-white text-neutral-700 hover:bg-brand-sand text-xs font-bold px-4 py-2 rounded-xl transition border border-brand-sand">المصاحف والتفاسير</button>
+          <button onclick="filterLibraryCategory('mutashabihat')" class="lib-tab-btn bg-white text-neutral-700 hover:bg-brand-sand text-xs font-bold px-4 py-2 rounded-xl transition border border-brand-sand">المتشابهات القرآنية</button>
+          <button onclick="filterLibraryCategory('audio')" class="lib-tab-btn bg-white text-neutral-700 hover:bg-brand-sand text-xs font-bold px-4 py-2 rounded-xl transition border border-brand-sand">تلاوات صوتية مسجلة</button>
+        </div>
+
+        <!-- Audio Player Simulation Box -->
+        <div class="mb-10 bg-white rounded-2xl p-6 border-2 border-brand-gold/30 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-full bg-brand-rose text-white flex items-center justify-center text-xl shadow-md">
+              <i class="fa-solid fa-volume-high"></i>
+            </div>
+            <div>
+              <span class="text-xs text-brand-rose font-bold">بث المقرأة الصوتي التجريبي</span>
+              <h3 class="font-bold text-neutral-800 text-base">سورة مريم - تلاوة تعليمية مرتلة بقصر المنفصل</h3>
+              <p class="text-xs text-neutral-500">بصوت معلمة الدورة: أ. سُمية الأنصاري</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+            <button id="audioPlayBtn" onclick="toggleAudioDemo()" class="px-5 py-2.5 rounded-xl bg-brand-green hover:bg-brand-greenDark text-white text-xs font-bold flex items-center gap-2 shadow transition">
+              <i id="audioPlayIcon" class="fa-solid fa-play"></i>
+              <span id="audioPlayText">تشغيل التلاوة</span>
+            </button>
+            <button onclick="showToast('تم تحميل المقطع الصوتي التعليمي للجهاز', 'success')" class="p-2.5 rounded-xl border border-brand-sand hover:bg-brand-sand text-neutral-600 text-xs">
+              <i class="fa-solid fa-download"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Books & Materials Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="libraryItemsContainer">
+          
+          <!-- Item 1 -->
+          <div class="lib-card bg-white rounded-2xl p-5 border border-brand-sand shadow-sm hover:shadow-lg transition flex flex-col justify-between" data-category="tajweed">
+            <div>
+              <div class="w-full h-40 bg-emerald-50 rounded-xl mb-4 flex items-center justify-center text-brand-green text-4xl border border-emerald-100">
+                <i class="fa-solid fa-book-bookmark"></i>
+              </div>
+              <span class="text-[10px] bg-emerald-100 text-brand-greenDark px-2 py-0.5 rounded font-bold">علم التجويد</span>
+              <h4 class="font-bold text-neutral-800 text-base mt-2">متن الجزرية في التجويد</h4>
+              <p class="text-xs text-neutral-500 mt-1">المنظومة الجزرية للإمام ابن الجزري رحمه الله محققة ومعتمدة ومضبوطة بالشكل.</p>
+            </div>
+            <div class="pt-4 border-t border-brand-sand mt-4 flex justify-between items-center text-xs">
+              <span class="text-neutral-400">PDF • 3.2 MB</span>
+              <button onclick="showToast('تم بدء تحميل كتاب متن الجزرية', 'success')" class="text-brand-green hover:text-brand-gold font-bold flex items-center gap-1">
+                <i class="fa-solid fa-download"></i> تحميل
+              </button>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="lib-card bg-white rounded-2xl p-5 border border-brand-sand shadow-sm hover:shadow-lg transition flex flex-col justify-between" data-category="mutashabihat">
+            <div>
+              <div class="w-full h-40 bg-amber-50 rounded-xl mb-4 flex items-center justify-center text-brand-goldDark text-4xl border border-amber-100">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">المتشابهات</span>
+              <h4 class="font-bold text-neutral-800 text-base mt-2">دليل ضبط المتشابهات اللفظية</h4>
+              <p class="text-xs text-neutral-500 mt-1">جداول مقارنة شاملة للآيات المتشابهة بين السور لتيسير الحفظ وعدم الخلط.</p>
+            </div>
+            <div class="pt-4 border-t border-brand-sand mt-4 flex justify-between items-center text-xs">
+              <span class="text-neutral-400">PDF • 5.8 MB</span>
+              <button onclick="showToast('تم تحميل دليل المتشابهات اللفظية', 'success')" class="text-brand-green hover:text-brand-gold font-bold flex items-center gap-1">
+                <i class="fa-solid fa-download"></i> تحميل
+              </button>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="lib-card bg-white rounded-2xl p-5 border border-brand-sand shadow-sm hover:shadow-lg transition flex flex-col justify-between" data-category="quran">
+            <div>
+              <div class="w-full h-40 bg-rose-50 rounded-xl mb-4 flex items-center justify-center text-brand-rose text-4xl border border-rose-100">
+                <i class="fa-solid fa-quran"></i>
+              </div>
+              <span class="text-[10px] bg-rose-100 text-brand-roseDark px-2 py-0.5 rounded font-bold">مصحف التجويد</span>
+              <h4 class="font-bold text-neutral-800 text-base mt-2">مصحف التجويد الملون الرقمي</h4>
+              <p class="text-xs text-neutral-500 mt-1">نسخة مصحف المدينة برواية حفص عن عاصم ملوّنة لأحكام المدود والغنن والإدغام.</p>
+            </div>
+            <div class="pt-4 border-t border-brand-sand mt-4 flex justify-between items-center text-xs">
+              <span class="text-neutral-400">PDF • 84 MB</span>
+              <button onclick="showToast('جارِ فتح مصحف التجويد للقراءة', 'info')" class="text-brand-green hover:text-brand-gold font-bold flex items-center gap-1">
+                <i class="fa-solid fa-eye"></i> قراءة
+              </button>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="lib-card bg-white rounded-2xl p-5 border border-brand-sand shadow-sm hover:shadow-lg transition flex flex-col justify-between" data-category="audio">
+            <div>
+              <div class="w-full h-40 bg-neutral-50 rounded-xl mb-4 flex items-center justify-center text-neutral-700 text-4xl border border-neutral-200">
+                <i class="fa-solid fa-headphones"></i>
+              </div>
+              <span class="text-[10px] bg-purple-100 text-purple-900 px-2 py-0.5 rounded font-bold">صوتيات تعليمية</span>
+              <h4 class="font-bold text-neutral-800 text-base mt-2">شرح مخارج الحروف المصور</h4>
+              <p class="text-xs text-neutral-500 mt-1">تسجيلات صوتية ومرئية تشرح مخارج اللسان والحلق والشفتين خطوة بخطوة.</p>
+            </div>
+            <div class="pt-4 border-t border-brand-sand mt-4 flex justify-between items-center text-xs">
+              <span class="text-neutral-400">MP3 / Video</span>
+              <button onclick="showToast('تم تشغيل مادة مخارج الحروف الصوتية', 'info')" class="text-brand-green hover:text-brand-gold font-bold flex items-center gap-1">
+                <i class="fa-solid fa-play"></i> استماع
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== 3. STUDENT JOURNEY INTERACTIVE SECTION ==================== -->
+    <div id="journeySection" class="site-section hidden">
+      <div class="bg-brand-cream border-b border-brand-sand py-8 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div>
+            <span class="text-brand-rose font-bold text-xs uppercase tracking-wide">الخارطة القرآنية للارتقاء</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-brand-green font-quran mt-1">مسار الطالبة داخل المقرأة</h1>
+            <p class="text-neutral-600 text-xs md:text-sm mt-1">
+              رحلة واضحة المعالم تبدأ من أول حرف حتى ختم المصحف الشريف والظفر بالإجازة بالسند.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="showSection('cardGeneratorSection')" class="bg-brand-gold hover:bg-brand-goldDark text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+              <i class="fa-solid fa-id-card"></i>
+              <span>إصدار بطاقة مساري</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <!-- Interactive Student Selector for demo -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-brand-sand mb-10 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full border-2 border-brand-gold overflow-hidden bg-brand-sand flex items-center justify-center font-bold text-brand-green">
+              <img id="journeyAvatarPreview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 id="journeyStudentNameDisplay" class="font-bold text-base text-neutral-800">أسماء بنت عبد الله الشريف</h3>
+                <span class="bg-emerald-100 text-brand-green text-[10px] font-bold px-2 py-0.5 rounded-full">طالبة متميزة</span>
+              </div>
+              <p class="text-xs text-neutral-500">فوج: التبيان لحفظ القرآن • الأستاذة المشرفة: عائشة المطيري</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-neutral-500">اختيار طالبة للعرض:</span>
+            <select id="journeyStudentSelector" onchange="switchJourneyStudent(this.value)" class="text-xs bg-brand-sand py-2 px-3 rounded-lg border-none focus:ring-1 focus:ring-brand-gold font-semibold">
+              <option value="1">أسماء بنت عبد الله (18 جزءاً)</option>
+              <option value="2">خديجة المنصور (خاتمة - إجازة)</option>
+              <option value="3">زينب إبراهيم (5 أجزاء - ناشئة)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Student Progress Meter -->
+        <div class="bg-white rounded-2xl p-6 border border-brand-sand shadow-sm mb-12">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-bold text-neutral-800">نسبة التقدم الكلي في حفظ المصحف الشريف</span>
+            <span id="journeyPercentText" class="text-sm font-extrabold text-brand-green">60% (18 من 30 جزء)</span>
+          </div>
+          <div class="w-full bg-neutral-100 h-3.5 rounded-full overflow-hidden p-0.5 border border-neutral-200">
+            <div id="journeyProgressBar" class="h-full bg-gradient-to-l from-brand-gold to-brand-green rounded-full transition-all duration-700" style="width: 60%;"></div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 text-center text-xs">
+            <div class="bg-brand-cream p-3 rounded-xl border border-brand-sand">
+              <span class="text-neutral-500 block">الجلسات المكتملة</span>
+              <strong id="journeySessionsCount" class="text-sm text-neutral-800">142 جلسة</strong>
+            </div>
+            <div class="bg-brand-cream p-3 rounded-xl border border-brand-sand">
+              <span class="text-neutral-500 block">التقييم العام</span>
+              <strong id="journeyScoreGrade" class="text-sm text-brand-green">98.5% (ممتاز مرتفع)</strong>
+            </div>
+            <div class="bg-brand-cream p-3 rounded-xl border border-brand-sand">
+              <span class="text-neutral-500 block">الأجزاء المتقنة</span>
+              <strong id="journeyJuzCount" class="text-sm text-brand-rose">18 أجزاء</strong>
+            </div>
+            <div class="bg-brand-cream p-3 rounded-xl border border-brand-sand">
+              <span class="text-neutral-500 block">تاريخ الالتحاق</span>
+              <strong class="text-sm text-neutral-800">15 محرم 1445هـ</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIMELINE MILESTONES -->
+        <div class="relative border-r-2 border-brand-gold/40 mr-4 sm:mr-8 space-y-10">
+          
+          <!-- Step 1 (Completed) -->
+          <div class="relative pr-8 group">
+            <div class="absolute -right-3.5 top-1.5 w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center text-xs shadow-md border-2 border-white">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm hover:shadow-md transition">
+              <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
+                <h4 class="font-bold text-neutral-800 text-base">المرحلة الأولى: القبول وتحديد المستوى والتأسيس</h4>
+                <span class="bg-emerald-100 text-brand-green text-[11px] font-bold px-2.5 py-0.5 rounded-full">مكتمل بنجاح</span>
+              </div>
+              <p class="text-xs text-neutral-600 leading-relaxed mb-3">
+                اجتياز المقابلة الصوتية الأولية، تصحيح مخارج الحروف، وضبط قراءة الفاتحة وجزء عمّ، واعتماد خطة الحفظ الشخصية.
+              </p>
+              <div class="text-[11px] text-neutral-400 flex items-center gap-3">
+                <span><i class="fa-regular fa-calendar ml-1"></i> تم الإنجاز: 1 صفر 1445هـ</span>
+                <span><i class="fa-solid fa-star text-brand-gold ml-1"></i> التقدير: ممتاز</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 (Completed) -->
+          <div class="relative pr-8 group">
+            <div class="absolute -right-3.5 top-1.5 w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center text-xs shadow-md border-2 border-white">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm hover:shadow-md transition">
+              <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
+                <h4 class="font-bold text-neutral-800 text-base">المرحلة الثانية: حفظ أول 10 أجزاء وتثبيتها</h4>
+                <span class="bg-emerald-100 text-brand-green text-[11px] font-bold px-2.5 py-0.5 rounded-full">مكتمل بنجاح</span>
+              </div>
+              <p class="text-xs text-neutral-600 leading-relaxed mb-3">
+                إتمام حفظ وتثبيت السور من سورة الناس إلى سورة العنكبوت مع دراسة أحكام النون الساكنة والتنوين والمدود.
+              </p>
+              <div class="text-[11px] text-neutral-400 flex items-center gap-3">
+                <span><i class="fa-regular fa-calendar ml-1"></i> تم الإنجاز: 20 ربيع الآخر 1445هـ</span>
+                <span><i class="fa-solid fa-certificate text-brand-gold ml-1"></i> منح شهادة إتمام الربع الأول</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 (Current Active Stage) -->
+          <div class="relative pr-8 group">
+            <div class="absolute -right-3.5 top-1.5 w-7 h-7 rounded-full bg-brand-gold text-brand-greenDark flex items-center justify-center text-xs shadow-md border-2 border-white ring-4 ring-brand-gold/20 animate-pulse">
+              <i class="fa-solid fa-spinner"></i>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border-2 border-brand-gold/60 shadow-md">
+              <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
+                <h4 class="font-bold text-neutral-800 text-base flex items-center gap-2">
+                  <span>المرحلة الثالثة: مسار النصف الثاني (من سورة الكهف إلى البقرة)</span>
+                  <span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+                </h4>
+                <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">المرحلة الحالية (قيد الحفظ)</span>
+              </div>
+              <p class="text-xs text-neutral-600 leading-relaxed mb-3">
+                الطالبة تقترب من إتمام الجزء التاسع عشر، مع جلسات مراجعة تكثيفية أسبوعية للماضي القريب والبعيد لتثبيت الوقف والابتداء.
+              </p>
+              <div class="bg-brand-cream p-3 rounded-xl border border-brand-sand text-xs flex justify-between items-center">
+                <span>الجلسة القادمة: غداً في تمام الساعة 5:00 عصراً</span>
+                <span class="font-bold text-brand-green">مقرر الغد: سورة مريم (آية 1-40)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 (Future Step) -->
+          <div class="relative pr-8 group opacity-75">
+            <div class="absolute -right-3.5 top-1.5 w-7 h-7 rounded-full bg-neutral-300 text-neutral-600 flex items-center justify-center text-xs shadow-md border-2 border-white">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand">
+              <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
+                <h4 class="font-bold text-neutral-700 text-base">المرحلة الرابعة: الختمة الشاملة واختبار الـ 30 جزءاً</h4>
+                <span class="bg-neutral-100 text-neutral-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full">مرحلة قادمة</span>
+              </div>
+              <p class="text-xs text-neutral-500 leading-relaxed">
+                سرد المصحف كاملاً خلال ثلاثة مجالس متتالية أمام لجنة الاختبار المكونة من كبار معلمات المقرأة للحصول على إشعار الختم.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 5 (Ultimate Goal) -->
+          <div class="relative pr-8 group opacity-75">
+            <div class="absolute -right-3.5 top-1.5 w-7 h-7 rounded-full bg-neutral-300 text-neutral-600 flex items-center justify-center text-xs shadow-md border-2 border-white">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand">
+              <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
+                <h4 class="font-bold text-neutral-700 text-base">المرحلة الخامسة: الإجازة بالسند المتصل إلى رسول الله ﷺ</h4>
+                <span class="bg-neutral-100 text-neutral-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full">الهدف الأسمى</span>
+              </div>
+              <p class="text-xs text-neutral-500 leading-relaxed">
+                قراءة القرآن غيباً وتلاوةً بالرواية المختارة للحصول على الشهادة الرسمية المسندة.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== 4. STUDENT JOURNEY CARD GENERATOR SECTION ==================== -->
+    <div id="cardGeneratorSection" class="site-section hidden">
+      <div class="bg-brand-cream border-b border-brand-sand py-8 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div>
+            <span class="text-brand-rose font-bold text-xs uppercase tracking-wide">المنظومة الرقمية للبطاقات</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-brand-green font-quran mt-1">بطاقة مسار الطالبة الذكية</h1>
+            <p class="text-neutral-600 text-xs md:text-sm mt-1">
+              بطاقة رسمية معتمدة لكل طالبة بالمقرأة توثق مستواها وإنجازاتها بدقة، مع إمكانية التصدير والطباعة الفورية.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="window.print()" class="bg-brand-green hover:bg-brand-greenDark text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+              <i class="fa-solid fa-print"></i>
+              <span>طباعة البطاقة الرسمية</span>
+            </button>
+            <button onclick="downloadCardAsImage()" class="bg-brand-gold hover:bg-brand-goldDark text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+              <i class="fa-solid fa-download"></i>
+              <span>تحميل كصورة (PNG)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Card Customization Controls (Left 4 cols) -->
+          <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-brand-sand shadow-sm space-y-4">
+            <h3 class="font-bold text-base text-brand-greenDark border-b border-brand-sand pb-3 flex items-center gap-2">
+              <i class="fa-solid fa-sliders text-brand-gold"></i>
+              <span>تخصيص بيانات البطاقة</span>
+            </h3>
+
+            <div>
+              <label class="block text-xs font-semibold text-neutral-600 mb-1">اسم الطالبة الرباعي:</label>
+              <input type="text" id="cardNameInput" value="أسماء بنت عبد الله الشريف" oninput="updateCardPreview()" class="w-full text-xs p-2.5 rounded-xl border border-neutral-300 focus:ring-1 focus:ring-brand-gold focus:outline-none">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-neutral-600 mb-1">الرقم الأكاديمي:</label>
+                <input type="text" id="cardIdInput" value="IQ-1446-089" oninput="updateCardPreview()" class="w-full text-xs p-2.5 rounded-xl border border-neutral-300 focus:ring-1 focus:ring-brand-gold focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-neutral-600 mb-1">اسم الفوج / الحلقة:</label>
+                <input type="text" id="cardGroupInput" value="فوج التبيان القرآني" oninput="updateCardPreview()" class="w-full text-xs p-2.5 rounded-xl border border-neutral-300 focus:ring-1 focus:ring-brand-gold focus:outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-neutral-600 mb-1">المستوى المنجز:</label>
+                <select id="cardLevelSelect" onchange="updateCardPreview()" class="w-full text-xs p-2.5 rounded-xl border border-neutral-300 focus:ring-1 focus:ring-brand-gold focus:outline-none">
+                  <option value="حفظ 18 جزءاً (المرحلة الثالثة)">حفظ 18 جزءاً (المرحلة 3)</option>
+                  <option value="خاتمة لكتاب الله (إجازة بالسند)">خاتمة (إجازة بالسند)</option>
+                  <option value="حفظ 10 أجزاء (المرحلة 2)">حفظ 10 أجزاء (المرحلة 2)</option>
+                  <option value="حفظ 5 أجزاء (مسار الناشئة)">حفظ 5 أجزاء (ناشئة)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-neutral-600 mb-1">المعلمة المشرفة:</label>
+                <input type="text" id="cardTeacherInput" value="أ. عائشة المطيري" oninput="updateCardPreview()" class="w-full text-xs p-2.5 rounded-xl border border-neutral-300 focus:ring-1 focus:ring-brand-gold focus:outline-none">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-neutral-600 mb-1">نسبة التقييم والتقدير:</label>
+              <input type="text" id="cardGradeInput" value="98.5% - ممتاز مع مرتبة الشرف" oninput="updateCardPreview()" class="w-full text-xs p-2.5 rounded-xl border border-neutral-300 focus:ring-1 focus:ring-brand-gold focus:outline-none">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-neutral-600 mb-1">تغيير السمة اللونية للبطاقة:</label>
+              <div class="flex items-center gap-3 pt-1">
+                <button onclick="changeCardTheme('emerald')" class="w-8 h-8 rounded-full bg-brand-green border-2 border-white shadow hover:scale-110 transition"></button>
+                <button onclick="changeCardTheme('gold')" class="w-8 h-8 rounded-full bg-brand-gold border-2 border-white shadow hover:scale-110 transition"></button>
+                <button onclick="changeCardTheme('rose')" class="w-8 h-8 rounded-full bg-brand-rose border-2 border-white shadow hover:scale-110 transition"></button>
+              </div>
+            </div>
+
+            <div class="p-3 bg-brand-cream rounded-xl border border-brand-sand text-[11px] text-neutral-500 leading-relaxed">
+              <i class="fa-solid fa-circle-info text-brand-gold ml-1"></i>
+              تحتوي البطاقة على رمز QR مشفّر يمكن مسحه عبر كاميرا الجوال للتحقق الفوري من صحة مسار الطالبة وإنجازاتها من خادم المقرأة.
+            </div>
+          </div>
+
+          <!-- Live Card Preview (Right 7 cols) -->
+          <div class="lg:col-span-7 flex justify-center">
+            
+            <!-- THE STUDENT CARD TO BE PRINTED/SAVED -->
+            <div id="studentJourneyCardPrint" class="w-full max-w-md badge-card rounded-3xl p-6 border-4 border-brand-gold relative overflow-hidden transition-all duration-300">
+              
+              <!-- Subtle Islamic Top Arch Frame Decor -->
+              <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-brand-gold/15 pointer-events-none blur-xl"></div>
+              <div class="absolute -bottom-12 -left-12 w-32 h-32 rounded-full bg-brand-green/15 pointer-events-none blur-xl"></div>
+              
+              <!-- Header with Logo and Title -->
+              <div class="flex items-center justify-between border-b-2 border-brand-gold/30 pb-4 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-13 h-13 rounded-full border-2 border-brand-gold p-0.5 bg-white shadow-sm flex-shrink-0">
+                    <img src="https://www.designarena.ai/u/6793860c-05b2-47bd-858f-b19ac9c9eb33" alt="Logo" class="w-12 h-12 rounded-full object-cover">
+                  </div>
+                  <div>
+                    <h3 class="font-extrabold text-sm md:text-base font-quran text-brand-greenDark">مقرأة اقرأ وارتقِ</h3>
+                    <p class="text-[10px] text-brand-rose font-bold">بطاقة الإنجاز والمسار القرآني الرسمي</p>
+                  </div>
+                </div>
+                <div class="text-left">
+                  <span id="previewCardIdBadge" class="bg-brand-green text-brand-goldLight text-[10px] font-mono px-2 py-1 rounded-md font-bold tracking-wider">IQ-1446-089</span>
+                </div>
+              </div>
+
+              <!-- Student Profile Summary -->
+              <div class="flex items-center gap-4 my-5 bg-white/70 p-3.5 rounded-2xl border border-brand-sand">
+                <div class="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-brand-gold flex-shrink-0 shadow-sm bg-neutral-100">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Student" class="w-full h-full object-cover">
+                  <span class="absolute bottom-0 inset-x-0 bg-brand-green/80 text-[8px] text-white text-center font-bold">طالبة</span>
+                </div>
+                <div class="overflow-hidden">
+                  <h4 id="previewCardName" class="font-black text-sm text-neutral-900 truncate">أسماء بنت عبد الله الشريف</h4>
+                  <div id="previewCardGroup" class="text-xs text-brand-green font-semibold mt-0.5">فوج التبيان القرآني</div>
+                  <div id="previewCardTeacher" class="text-[11px] text-neutral-500 mt-0.5">المشرفة: أ. عائشة المطيري</div>
+                </div>
+              </div>
+
+              <!-- Level & Grade Badges -->
+              <div class="grid grid-cols-2 gap-3 mb-5">
+                <div class="bg-white/80 p-3 rounded-xl border border-brand-sand text-right">
+                  <span class="text-[10px] text-neutral-400 block font-bold">المستوى القرآني:</span>
+                  <span id="previewCardLevel" class="text-xs font-black text-brand-rose block truncate mt-0.5">حفظ 18 جزءاً (المرحلة الثالثة)</span>
+                </div>
+                <div class="bg-white/80 p-3 rounded-xl border border-brand-sand text-right">
+                  <span class="text-[10px] text-neutral-400 block font-bold">التقدير والتقييم:</span>
+                  <span id="previewCardGrade" class="text-xs font-black text-brand-green block truncate mt-0.5">98.5% - ممتاز</span>
+                </div>
+              </div>
+
+              <!-- Card Footer: Verification QR Code & Seal -->
+              <div class="pt-3 border-t border-brand-gold/30 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <!-- Simulated QR Code -->
+                  <div class="w-12 h-12 bg-white border border-brand-sand p-1 rounded-lg flex items-center justify-center shadow-xs">
+                    <svg class="w-full h-full text-neutral-800" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm8 0h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm4 4h2v2h-2v-2zm2-2h2v2h-2v-2zm2-4h2v2h-2v-2zm-6 2h2v2h-2v-2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-[9px] text-neutral-500 font-bold">تحقق إلكتروني رسمي</div>
+                    <div class="text-[8px] text-neutral-400">صالح لعام 1446-1447 هـ</div>
+                  </div>
+                </div>
+
+                <!-- Academy Official Stamp Mock -->
+                <div class="text-center">
+                  <div class="w-14 h-14 rounded-full border-2 border-brand-rose border-dashed flex flex-col items-center justify-center p-1 transform rotate-6">
+                    <i class="fa-solid fa-stamp text-brand-rose text-xs"></i>
+                    <span class="text-[7px] text-brand-rose font-bold">معتمد إلكترونياً</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 5. PORTALS / DASHBOARDS (Admin, Teacher, Student) ==================== -->
+    <div id="portalSection" class="site-section hidden">
+      <!-- Portal Sub-Nav / Role Switcher Header -->
+      <div class="bg-brand-greenDark text-white py-4 px-4 sm:px-8 border-b border-brand-gold/30">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div>
+              <span class="text-xs text-brand-goldLight font-bold">النظام الإداري للمقرأة:</span>
+              <h2 id="portalRoleTitle" class="text-base font-bold">لوحة تحكم المدير العام</h2>
+            </div>
+          </div>
+
+          <!-- Fast Role Switcher Tabs -->
+          <div class="flex items-center bg-white/10 rounded-xl p-1 text-xs">
+            <button onclick="switchPortalRole('admin')" id="roleBtnAdmin" class="px-3.5 py-1.5 rounded-lg font-bold bg-brand-gold text-brand-greenDark transition">المدير</button>
+            <button onclick="switchPortalRole('teacher')" id="roleBtnTeacher" class="px-3.5 py-1.5 rounded-lg font-bold text-white hover:text-brand-gold transition">الأستاذة</button>
+            <button onclick="switchPortalRole('student')" id="roleBtnStudent" class="px-3.5 py-1.5 rounded-lg font-bold text-white hover:text-brand-gold transition">الطالبة</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- ================= A. ADMIN VIEW ================= -->
+        <div id="adminPortalView" class="portal-role-view space-y-8">
+          
+          <!-- Admin Metrics Row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-xs text-neutral-500 font-semibold">إجمالي الطالبات المسجلات</span>
+                <div class="text-2xl font-black text-brand-green mt-1" id="adminTotalStudents">12 طالبة معروضة</div>
+                <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-arrow-up ml-1"></i>+12% هذا الأسبوع</span>
+              </div>
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-brand-green flex items-center justify-center text-xl">
+                <i class="fa-solid fa-user-graduate"></i>
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-xs text-neutral-500 font-semibold">الأستاذات والمعلمات</span>
+                <div class="text-2xl font-black text-brand-rose mt-1">18 معلّمة</div>
+                <span class="text-[10px] text-neutral-400">في 12 فوجاً نشطاً</span>
+              </div>
+              <div class="w-12 h-12 rounded-xl bg-rose-50 text-brand-rose flex items-center justify-center text-xl">
+                <i class="fa-solid fa-chalkboard-teacher"></i>
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-xs text-neutral-500 font-semibold">الأفواج القرآنية</span>
+                <div class="text-2xl font-black text-brand-goldDark mt-1">12 فوجاً</div>
+                <span class="text-[10px] text-amber-600 font-bold">بمعدل 4 جلسات يومياً</span>
+              </div>
+              <div class="w-12 h-12 rounded-xl bg-amber-50 text-brand-goldDark flex items-center justify-center text-xl">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-xs text-neutral-500 font-semibold">الختمات المعتمدة هذا العام</span>
+                <div class="text-2xl font-black text-brand-greenDark mt-1">34 ختمة</div>
+                <span class="text-[10px] text-emerald-600 font-bold">بالسند المتصل</span>
+              </div>
+              <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-award"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Management Actions & Student Table Section -->
+          <div class="bg-white rounded-2xl border border-brand-sand shadow-sm overflow-hidden">
+            <!-- Header bar with search and Add button -->
+            <div class="p-5 border-b border-brand-sand flex flex-wrap justify-between items-center gap-4 bg-brand-cream/40">
+              <div>
+                <h3 class="font-extrabold text-base text-brand-greenDark">إدارة شؤون الطالبات والأفواج</h3>
+                <p class="text-xs text-neutral-500 mt-0.5">يمكنك إضافة طالبة جديدة، توليد كلمة المرور، تعديل الفوج، ومتابعة المسار.</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="relative">
+                  <input type="text" id="adminStudentSearch" onkeyup="filterAdminStudents()" placeholder="بحث باسم الطالبة أو الفوج..." class="text-xs py-2 pr-8 pl-3 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold w-48 sm:w-60">
+                  <i class="fa-solid fa-search absolute right-2.5 top-2.5 text-neutral-400 text-xs"></i>
+                </div>
+                <button onclick="openModal('addStudentModal')" class="bg-brand-green hover:bg-brand-greenDark text-white text-xs font-bold px-4 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+                  <i class="fa-solid fa-plus"></i>
+                  <span>إضافة طالبة جديدة</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Table of Students -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-right text-xs">
+                <thead class="bg-neutral-50 text-neutral-500 border-b border-brand-sand">
+                  <tr>
+                    <th class="p-3.5 font-bold">اسم الطالبة</th>
+                    <th class="p-3.5 font-bold">الرقم الأكاديمي</th>
+                    <th class="p-3.5 font-bold">الفوج الحالي</th>
+                    <th class="p-3.5 font-bold">الأستاذة المشرفة</th>
+                    <th class="p-3.5 font-bold">الأجزاء المنجزة</th>
+                    <th class="p-3.5 font-bold">حالة الحساب</th>
+                    <th class="p-3.5 font-bold text-center">إجراءات</th>
+                  </tr>
+                </thead>
+                <tbody id="adminStudentsTableBody" class="divide-y divide-brand-sand text-neutral-700">
+                  <!-- Populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Table footer -->
+            <div class="p-4 bg-brand-cream/30 border-t border-brand-sand flex justify-between items-center text-xs text-neutral-500">
+              <span id="adminTableCountLabel">عرض 4 من أصل 4 طالبات</span>
+              <div class="flex gap-1">
+                <button class="px-2.5 py-1 bg-white border border-brand-sand rounded hover:bg-brand-sand">السابق</button>
+                <button class="px-2.5 py-1 bg-brand-green text-white rounded">1</button>
+                <button class="px-2.5 py-1 bg-white border border-brand-sand rounded hover:bg-brand-sand">التالي</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Announcements & System Broadcast Manager -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-1 bg-white p-5 rounded-2xl border border-brand-sand shadow-sm space-y-4">
+              <h4 class="font-bold text-sm text-brand-greenDark border-b border-brand-sand pb-2 flex items-center gap-2">
+                <i class="fa-solid fa-bullhorn text-brand-rose"></i>
+                <span>نشر إعلان جديد للمقرأة</span>
+              </h4>
+              <div>
+                <label class="block text-xs font-semibold text-neutral-600 mb-1">عنوان الإعلان:</label>
+                <input type="text" id="announcementTitleInput" placeholder="مثال: موعد اختبار الجزء الخامس" class="w-full text-xs p-2 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-neutral-600 mb-1">الجمهور المستهدف:</label>
+                <select id="announcementTargetSelect" class="w-full text-xs p-2 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold">
+                  <option>كافة الطالبات والأستاذات</option>
+                  <option>طالبات مسار الإتقان فقط</option>
+                  <option>الأستاذات فقط</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-neutral-600 mb-1">نص الإعلان:</label>
+                <textarea id="announcementTextInput" rows="3" placeholder="تفاصيل الإشعار أو الموعد..." class="w-full text-xs p-2 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold"></textarea>
+              </div>
+              <button onclick="postAdminAnnouncement()" class="w-full py-2 bg-brand-gold hover:bg-brand-goldDark text-white text-xs font-bold rounded-xl shadow transition">
+                نشر الإعلان الفوري
+              </button>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-5 rounded-2xl border border-brand-sand shadow-sm">
+              <h4 class="font-bold text-sm text-brand-greenDark border-b border-brand-sand pb-2 mb-4 flex items-center justify-between">
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-clock-rotate-left text-brand-gold"></i>
+                  <span>الإعلانات النشطة حالياً في المقرأة</span>
+                </span>
+                <span class="text-xs text-neutral-400 font-normal">تحديث مباشر</span>
+              </h4>
+              <div id="adminAnnouncementsList" class="space-y-3">
+                <!-- Dynamic Announcements -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= B. TEACHER VIEW ================= -->
+        <div id="teacherPortalView" class="portal-role-view hidden space-y-8">
+          
+          <div class="bg-white p-6 rounded-2xl border border-brand-sand shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <span class="text-brand-rose font-bold text-xs">أهلاً بكِ فضيلة الأستاذة: عائشة المطيري</span>
+              <h3 class="text-xl font-extrabold text-brand-greenDark font-quran mt-1">حلقة فوج التبيان - مسار التثبيت المتقدم</h3>
+              <p class="text-xs text-neutral-500 mt-1">موعد الحلقة اليوم: بعد صلاة العصر (5:00 م بتوقيت مكة)</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="showToast('تم فتح قاعة التسميع الافتراضية بنجاح', 'success')" class="bg-brand-green hover:bg-brand-greenDark text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+                <i class="fa-solid fa-video"></i>
+                <span>بدء الجلسة القرآنية (Zoom)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Daily Recitation & Grading Table -->
+          <div class="bg-white rounded-2xl border border-brand-sand shadow-sm overflow-hidden">
+            <div class="p-5 border-b border-brand-sand flex justify-between items-center">
+              <div>
+                <h4 class="font-bold text-sm text-neutral-800">رصد التسميع اليومي للطالبات (حلقة اليوم)</h4>
+                <p class="text-xs text-neutral-500">سجّلي درجة الحفظ والملاحظات لكل طالبة</p>
+              </div>
+              <span class="text-xs bg-brand-cream text-brand-green font-bold px-3 py-1 rounded-lg border border-brand-sand">التاريخ: اليوم</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-right text-xs">
+                <thead class="bg-neutral-50 text-neutral-500 border-b border-brand-sand">
+                  <tr>
+                    <th class="p-3.5 font-bold">الطالبة</th>
+                    <th class="p-3.5 font-bold">المقرر اليومي</th>
+                    <th class="p-3.5 font-bold">حالة الحضور</th>
+                    <th class="p-3.5 font-bold">درجة الحفظ والتجويد</th>
+                    <th class="p-3.5 font-bold">الملاحظة التوجيهية</th>
+                    <th class="p-3.5 font-bold text-center">الإجراء</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-brand-sand">
+                  <tr>
+                    <td class="p-3.5 font-bold text-neutral-800">أسماء بنت عبد الله الشريف</td>
+                    <td class="p-3.5 text-neutral-600">سورة مريم (1-40)</td>
+                    <td class="p-3.5">
+                      <span class="bg-emerald-100 text-brand-green font-bold px-2 py-0.5 rounded text-[11px]">حاضرة</span>
+                    </td>
+                    <td class="p-3.5">
+                      <select class="bg-brand-sand p-1.5 rounded text-xs font-bold border-none">
+                        <option>10 / 10 (ممتاز)</option>
+                        <option>9.5 / 10</option>
+                        <option>9.0 / 10</option>
+                      </select>
+                    </td>
+                    <td class="p-3.5">
+                      <input type="text" value="أداء متقن مع مراعاة المد العارض" class="bg-neutral-50 p-1.5 rounded border border-neutral-200 text-xs w-full">
+                    </td>
+                    <td class="p-3.5 text-center">
+                      <button onclick="showToast('تم رصد الدرجة بنجاح للطالبة أسماء', 'success')" class="bg-brand-gold hover:bg-brand-goldDark text-white px-3 py-1 rounded text-[11px] font-bold">حفظ التقييم</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3.5 font-bold text-neutral-800">نورة بنت فهد القحطاني</td>
+                    <td class="p-3.5 text-neutral-600">سورة الكهف (الجزء الأخير)</td>
+                    <td class="p-3.5">
+                      <span class="bg-emerald-100 text-brand-green font-bold px-2 py-0.5 rounded text-[11px]">حاضرة</span>
+                    </td>
+                    <td class="p-3.5">
+                      <select class="bg-brand-sand p-1.5 rounded text-xs font-bold border-none">
+                        <option>9.5 / 10 (جيد جداً مرتفع)</option>
+                        <option>10 / 10</option>
+                      </select>
+                    </td>
+                    <td class="p-3.5">
+                      <input type="text" value="الانتباه إلى همزة الوصل في قوله تعالى" class="bg-neutral-50 p-1.5 rounded border border-neutral-200 text-xs w-full">
+                    </td>
+                    <td class="p-3.5 text-center">
+                      <button onclick="showToast('تم رصد الدرجة بنجاح للطالبة نورة', 'success')" class="bg-brand-gold hover:bg-brand-goldDark text-white px-3 py-1 rounded text-[11px] font-bold">حفظ التقييم</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3.5 font-bold text-neutral-800">خديجة المنصور</td>
+                    <td class="p-3.5 text-neutral-600">سورة البقرة (1-100) إجازة</td>
+                    <td class="p-3.5">
+                      <span class="bg-emerald-100 text-brand-green font-bold px-2 py-0.5 rounded text-[11px]">حاضرة</span>
+                    </td>
+                    <td class="p-3.5">
+                      <select class="bg-brand-sand p-1.5 rounded text-xs font-bold border-none">
+                        <option>10 / 10 (إتقان تام بالسند)</option>
+                      </select>
+                    </td>
+                    <td class="p-3.5">
+                      <input type="text" value="سرد غيبي متصل بإتقان أحكام الإدغام" class="bg-neutral-50 p-1.5 rounded border border-neutral-200 text-xs w-full">
+                    </td>
+                    <td class="p-3.5 text-center">
+                      <button onclick="showToast('تم رصد تقييم الإجازة لخديجة', 'success')" class="bg-brand-gold hover:bg-brand-goldDark text-white px-3 py-1 rounded text-[11px] font-bold">حفظ التقييم</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= C. STUDENT VIEW ================= -->
+        <div id="studentPortalView" class="portal-role-view hidden space-y-8">
+          
+          <!-- Student Greeting Card -->
+          <div class="bg-gradient-to-r from-brand-greenDark to-brand-green text-white p-6 rounded-3xl shadow-lg border border-brand-gold/40 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full border-2 border-brand-gold p-0.5 overflow-hidden bg-white flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Student" class="w-full h-full object-cover rounded-full">
+              </div>
+              <div>
+                <span class="text-xs text-brand-goldLight font-bold">مرحباً بكِ في صفحتكِ القرآنية</span>
+                <h3 class="text-2xl font-black font-quran">أسماء بنت عبد الله الشريف</h3>
+                <p class="text-xs text-brand-sand mt-0.5">فوج التبيان لحفظ القرآن الكريم • المستوى الثالث</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <button onclick="showSection('cardGeneratorSection')" class="bg-brand-gold hover:bg-brand-goldDark text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+                <i class="fa-solid fa-id-card"></i>
+                <span>عرض بطاقتي الرقمية</span>
+              </button>
+              <button onclick="showSection('journeySection')" class="bg-white/10 hover:bg-white/20 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2">
+                <i class="fa-solid fa-compass"></i>
+                <span>مسار تقدمي</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Student Stats -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm text-center">
+              <span class="text-xs text-neutral-400 font-bold block mb-1">الرصيد المنجز من المصحف</span>
+              <span class="text-3xl font-extrabold text-brand-green font-quran">18 جزءاً</span>
+              <p class="text-[11px] text-neutral-500 mt-1">باقي 12 جزءاً لختم المصحف</p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm text-center">
+              <span class="text-xs text-neutral-400 font-bold block mb-1">معدل الحضور والالتزام</span>
+              <span class="text-3xl font-extrabold text-brand-goldDark font-quran">99%</span>
+              <p class="text-[11px] text-emerald-600 mt-1">حضور منتظم دون غياب</p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-brand-sand shadow-sm text-center">
+              <span class="text-xs text-neutral-400 font-bold block mb-1">الواجب التسميعي القادم</span>
+              <span class="text-lg font-bold text-brand-rose block mt-1">سورة مريم (1-40)</span>
+              <p class="text-[11px] text-neutral-500 mt-1">الموعد: غداً الساعة 5:00 عصراً</p>
+            </div>
+          </div>
+
+          <!-- Recent Evaluations & Teacher Feedback -->
+          <div class="bg-white rounded-2xl border border-brand-sand shadow-sm p-6">
+            <h4 class="font-bold text-base text-brand-greenDark mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-comment-dots text-brand-gold"></i>
+              <span>آخر توجيهات وتقييمات المعلمة المشرفة</span>
+            </h4>
+            <div class="space-y-4">
+              <div class="p-4 rounded-xl bg-brand-cream border border-brand-sand flex flex-col sm:flex-row justify-between gap-3">
+                <div>
+                  <span class="text-xs font-bold text-brand-green">تسميع سورة الكهف كاملة</span>
+                  <p class="text-xs text-neutral-600 mt-1">"ما شاء الله تبارك الله، تلاوة خاشعة وحفظ متين، تميزتِ في تطبيق أحكام الإخفاء الحقيقي بدقة."</p>
+                </div>
+                <div class="text-left sm:text-right flex-shrink-0">
+                  <span class="bg-emerald-100 text-brand-green text-xs font-bold px-2.5 py-1 rounded-full">10 / 10 ممتاز</span>
+                  <span class="text-[10px] text-neutral-400 block mt-1">قبل يومين</span>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-brand-cream border border-brand-sand flex flex-col sm:flex-row justify-between gap-3">
+                <div>
+                  <span class="text-xs font-bold text-brand-green">اختبار الجزء الخامس عشر</span>
+                  <p class="text-xs text-neutral-600 mt-1">"درجة ممتازة، احرصي فقط على بيان صفة القلقلة في حرف القاف الساكن في مواضع سورة الإسراء."</p>
+                </div>
+                <div class="text-left sm:text-right flex-shrink-0">
+                  <span class="bg-emerald-100 text-brand-green text-xs font-bold px-2.5 py-1 rounded-full">9.8 / 10 ممتاز</span>
+                  <span class="text-[10px] text-neutral-400 block mt-1">قبل أسبوع</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. LOGIN MODAL -->
+  <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
+    <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-brand-gold/40 transform scale-95 transition-transform duration-200" id="loginModalContent">
+      
+      <!-- Modal Header -->
+      <div class="bg-brand-greenDark p-6 text-white text-center relative border-b-2 border-brand-gold">
+        <button onclick="closeModal('loginModal')" class="absolute left-4 top-4 text-white/70 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="w-14 h-14 mx-auto rounded-full bg-white p-0.5 border-2 border-brand-gold shadow mb-2">
+          <img src="https://www.designarena.ai/u/6793860c-05b2-47bd-858f-b19ac9c9eb33" alt="Logo" class="w-full h-full object-cover rounded-full">
+        </div>
+        <h3 class="font-bold text-lg font-quran text-brand-goldLight">بوابة الدخول للمنظومة القرآنية</h3>
+        <p class="text-xs text-brand-sand mt-0.5">مقرأة اقرأ وارتقِ الإلكترونية</p>
+      </div>
+
+      <!-- Quick Role Selection Tabs inside Modal -->
+      <div class="p-6">
+        <div class="flex items-center justify-center gap-2 p-1 bg-brand-sand/70 rounded-xl mb-6 text-xs font-bold">
+          <button onclick="selectModalLoginTab('admin')" id="modalTabAdmin" class="flex-1 py-2 rounded-lg bg-brand-green text-white transition">المدير</button>
+          <button onclick="selectModalLoginTab('teacher')" id="modalTabTeacher" class="flex-1 py-2 rounded-lg text-neutral-700 hover:text-brand-green transition">الأستاذة</button>
+          <button onclick="selectModalLoginTab('student')" id="modalTabStudent" class="flex-1 py-2 rounded-lg text-neutral-700 hover:text-brand-green transition">الطالبة</button>
+        </div>
+
+        <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-neutral-600 mb-1" id="loginUsernameLabel">اسم المستخدم / الرقم الأكاديمي:</label>
+            <div class="relative">
+              <input type="text" id="loginUsernameInput" required value="admin_iqra" class="w-full text-xs p-3 pr-9 rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-gold">
+              <i class="fa-solid fa-user absolute right-3 top-3.5 text-neutral-400 text-xs"></i>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-neutral-600 mb-1">كلمة المرور:</label>
+            <div class="relative">
+              <input type="password" id="loginPasswordInput" required value="••••••••" class="w-full text-xs p-3 pr-9 rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-gold">
+              <i class="fa-solid fa-lock absolute right-3 top-3.5 text-neutral-400 text-xs"></i>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center text-xs text-neutral-500">
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" checked class="rounded text-brand-green focus:ring-brand-gold">
+              <span>تذكر بيانات الدخول</span>
+            </label>
+            <a href="javascript:void(0)" onclick="showToast('يرجى التواصل مع إدارة المقرأة لاستعادة كلمة المرور', 'info')" class="hover:text-brand-gold">نسيت كلمة المرور؟</a>
+          </div>
+
+          <button type="submit" class="w-full py-3 bg-brand-green hover:bg-brand-greenDark text-white font-bold text-xs rounded-xl shadow-md transition duration-200 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span id="loginSubmitBtnText">دخول لوحة المدير</span>
+          </button>
+        </form>
+
+        <!-- Fast Demo Helper Button -->
+        <div class="mt-4 pt-4 border-t border-brand-sand text-center">
+          <p class="text-[11px] text-neutral-400 mb-2">للتقييم والتجربة الفورية السريعة بدون إدخال:</p>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="quickRoleSwitch('admin'); closeModal('loginModal')" class="bg-brand-cream hover:bg-brand-sand text-brand-greenDark text-[11px] font-bold py-1.5 rounded-lg border border-brand-sand">
+              دخول كمدير
+            </button>
+            <button onclick="quickRoleSwitch('teacher'); closeModal('loginModal')" class="bg-brand-cream hover:bg-brand-sand text-brand-rose text-[11px] font-bold py-1.5 rounded-lg border border-brand-sand">
+              دخول كمعلمة
+            </button>
+            <button onclick="quickRoleSwitch('student'); closeModal('loginModal')" class="bg-brand-cream hover:bg-brand-sand text-brand-goldDark text-[11px] font-bold py-1.5 rounded-lg border border-brand-sand">
+              دخول كطالبة
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ADD STUDENT MODAL (ADMIN ONLY) -->
+  <div id="addStudentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-brand-gold/40 transform scale-95 transition-transform duration-200" id="addStudentModalContent">
+      <div class="bg-brand-greenDark p-5 text-white flex justify-between items-center border-b border-brand-gold/40">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-user-plus text-brand-gold"></i>
+          <h3 class="font-bold text-sm">تسجيل طالبة جديدة في المنظومة</h3>
+        </div>
+        <button onclick="closeModal('addStudentModal')" class="text-white/70 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleAddNewStudent(event)" class="p-6 space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-neutral-700 mb-1">الاسم الكامل للطالبة:</label>
+          <input type="text" id="newStudentName" required placeholder="مثال: مريم خالد الزهراني" class="w-full p-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-neutral-700 mb-1">الرقم الأكاديمي المقترح:</label>
+            <input type="text" id="newStudentId" required value="IQ-1446-105" class="w-full p-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold">
+          </div>
+          <div>
+            <label class="block font-semibold text-neutral-700 mb-1">تخصيص الفوج:</label>
+            <select id="newStudentGroup" class="w-full p-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold">
+              <option value="فوج التبيان القرآني">فوج التبيان القرآني</option>
+              <option value="فوج الهدى والنور">فوج الهدى والنور</option>
+              <option value="فوج إتقان المتشابهات">فوج إتقان المتشابهات</option>
+              <option value="فوج زهرات القرآن">فوج زهرات القرآن</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-neutral-700 mb-1">الأستاذة المشرفة:</label>
+            <select id="newStudentTeacher" class="w-full p-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold">
+              <option value="أ. عائشة المطيري">أ. عائشة المطيري</option>
+              <option value="أ. فاطمة الغامدي">أ. فاطمة الغامدي</option>
+              <option value="أ. سُمية الأنصاري">أ. سُمية الأنصاري</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-neutral-700 mb-1">الأجزاء المحفوظة مبدئياً:</label>
+            <input type="text" id="newStudentJuz" value="5 أجزاء" class="w-full p-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-gold">
+          </div>
+        </div>
+
+        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200">
+          <span class="font-bold text-amber-900 block mb-1">توليد بيانات الدخول التلقائية:</span>
+          <p class="text-[11px] text-amber-700">سيتم إنشاء حساب تلقائي للطالبة باسم مستخدم مماثل للرقم الأكاديمي وكلمة مرور مؤقتة تُرسل عبر البريد.</p>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="closeModal('addStudentModal')" class="px-4 py-2 rounded-xl bg-neutral-200 text-neutral-700 font-bold hover:bg-neutral-300 transition">إلغاء</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-green text-white font-bold hover:bg-brand-greenDark transition">إضافة الطالبة واعتمادها</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-brand-greenDark text-white border-t-4 border-brand-gold mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Academy info -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden p-0.5 border-2 border-brand-gold bg-white">
+              <img src="https://www.designarena.ai/u/6793860c-05b2-47bd-858f-b19ac9c9eb33" alt="Logo" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h3 class="font-bold text-lg font-quran text-brand-goldLight">مقرأة اقرأ وارتقِ</h3>
+              <p class="text-xs text-brand-sand">الإلكترونية العالمية</p>
+            </div>
+          </div>
+          <p class="text-xs text-brand-sand leading-relaxed">
+            منصة إسلامية قرآنية تعتني بتعليم كتاب الله عز وجل، إتقاناً وتجويداً وتدبراً، برؤية تقنية حديثة تدعم الهواتف والأجهزة الذكية.
+          </p>
+          <div class="flex items-center gap-3 text-brand-goldLight">
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-white transition"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-white transition"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-bold text-sm text-brand-goldLight mb-4 border-r-2 border-brand-gold pr-2">روابط سريعة</h4>
+          <ul class="text-xs space-y-2 text-brand-sand">
+            <li><a href="#" onclick="showSection('homeSection')" class="hover:text-white transition">الرئيسية</a></li>
+            <li><a href="#about" onclick="showSection('homeSection')" class="hover:text-white transition">عن المقرأة والأهداف</a></li>
+            <li><a href="#tracks" onclick="showSection('homeSection')" class="hover:text-white transition">المسارات القرآنية</a></li>
+            <li><a href="#" onclick="showSection('librarySection')" class="hover:text-white transition">المكتبة الرقمية</a></li>
+            <li><a href="#" onclick="showSection('journeySection')" class="hover:text-white transition">مسار الطالبة التفاعلي</a></li>
+            <li><a href="#" onclick="showSection('cardGeneratorSection')" class="hover:text-white transition">بطاقة الإنجاز والمسار</a></li>
+          </ul>
+        </div>
+
+        <!-- System Features & Mobile Expansion -->
+        <div>
+          <h4 class="font-bold text-sm text-brand-goldLight mb-4 border-r-2 border-brand-gold pr-2">توسيع المشروع والتطبيقات</h4>
+          <p class="text-xs text-brand-sand leading-relaxed mb-3">
+            تمت هيكلة قاعدة بيانات المقرأة ونظام الـ API لتكون جاهزة تماماً للربط مع تطبيقات Android و iOS في مراحل الإطلاق القادمة.
+          </p>
+          <div class="space-y-1.5 text-xs text-brand-sand">
+            <div><i class="fa-brands fa-google-play ml-1 text-brand-gold"></i> تطبيق أندرويد (قريباً)</div>
+            <div><i class="fa-brands fa-apple ml-1 text-brand-gold"></i> تطبيق آبل iOS (قريباً)</div>
+          </div>
+        </div>
+
+        <!-- Contact details -->
+        <div>
+          <h4 class="font-bold text-sm text-brand-goldLight mb-4 border-r-2 border-brand-gold pr-2">تواصل معنا</h4>
+          <ul class="text-xs space-y-2.5 text-brand-sand">
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-brand-gold"></i>
+              <span>info@iqra-irtaqi.edu</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-brand-gold"></i>
+              <span dir="ltr">+966 50 000 0000</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-brand-gold"></i>
+              <span>المملكة العربية السعودية • منصة إلكترونية عالمية</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 mt-10 pt-6 text-center text-xs text-brand-sand/70 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <p>جميع الحقوق محفوظة © 1446هـ / 2025م - مقرأة اقرأ وارتقِ الإلكترونية</p>
+        <p class="font-quran text-brand-gold">«وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا»</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // --- Academy State & Mock Data ---
+    const academyData = {
+      currentRole: 'admin',
+      activeModalLoginTab: 'admin',
+      students: [
+        { id: 'IQ-1446-089', name: 'أسماء بنت عبد الله الشريف', group: 'فوج التبيان القرآني', teacher: 'أ. عائشة المطيري', juz: '18 جزءاً', status: 'نشطة ومتميزة' },
+        { id: 'IQ-1446-042', name: 'خديجة بنت المنصور التميمي', group: 'فوج الإجازة بالسند', teacher: 'أ. فاطمة الغامدي', juz: '30 جزءاً (خاتمة)', status: 'مرحلة الإجازة' },
+        { id: 'IQ-1446-015', name: 'زينب بنت إبراهيم المري', group: 'فوج زهرات القرآن', teacher: 'أ. سُمية الأنصاري', juz: '5 أجزاء', status: 'نشطة' },
+        { id: 'IQ-1446-077', name: 'نورة بنت فهد القحطاني', group: 'فوج التبيان القرآني', teacher: 'أ. عائشة المطيري', juz: '12 جزءاً', status: 'نشطة' }
+      ],
+      announcements: [
+        { id: 1, title: 'موعد اختبار النصف الثاني من سورة البقرة', target: 'فوج التبيان', date: 'اليوم، 10:30 ص', text: 'يرجى من جميع الطالبات مراجعة مواضع الوقف في الربع الأخير والاستعداد للجلسة الصوتية.' },
+        { id: 2, title: 'مجلس سماع وإجازة بمتن تحفة الأطفال', target: 'عام لكافة الطالبات', date: 'أمس', text: 'يقام مجلس سماع المتن يوم السبت القادم بمشيئة الله تعالى مع منح شهادة حضور وسند للمتن.' }
+      ]
+    };
+
+    // --- Navigation between Single-Page Sections ---
+    function showSection(sectionId) {
+      document.querySelectorAll('.site-section').forEach(sec => {
+        sec.classList.add('hidden');
+      });
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Update Nav Link Active styles
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('text-brand-green', 'font-bold');
+      });
+    }
+
+    // --- Mobile Menu Toggle ---
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // --- Modal Management ---
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        const content = modal.querySelector('div[id$="Content"]');
+        if (content) {
+          content.classList.remove('scale-95');
+          content.classList.add('scale-100');
+        }
+      }, 10);
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      modal.classList.add('opacity-0');
+      const content = modal.querySelector('div[id$="Content"]');
+      if (content) {
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+      }
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    // --- Modal Role Selector ---
+    function selectModalLoginTab(role) {
+      academyData.activeModalLoginTab = role;
+      const tabAdmin = document.getElementById('modalTabAdmin');
+      const tabTeacher = document.getElementById('modalTabTeacher');
+      const tabStudent = document.getElementById('modalTabStudent');
+      const userInput = document.getElementById('loginUsernameInput');
+      const userLabel = document.getElementById('loginUsernameLabel');
+      const btnText = document.getElementById('loginSubmitBtnText');
+
+      [tabAdmin, tabTeacher, tabStudent].forEach(btn => {
+        btn.className = 'flex-1 py-2 rounded-lg text-neutral-700 hover:text-brand-green transition';
+      });
+
+      if (role === 'admin') {
+        tabAdmin.className = 'flex-1 py-2 rounded-lg bg-brand-green text-white transition font-bold';
+        userLabel.innerText = 'اسم مستخدم المدير:';
+        userInput.value = 'admin_iqra';
+        btnText.innerText = 'دخول لوحة المدير العام';
+      } else if (role === 'teacher') {
+        tabTeacher.className = 'flex-1 py-2 rounded-lg bg-brand-rose text-white transition font-bold';
+        userLabel.innerText = 'البريد أو رمز المعلمة:';
+        userInput.value = 'teacher_aisha';
+        btnText.innerText = 'دخول لوحة الأستاذة';
+      } else {
+        tabStudent.className = 'flex-1 py-2 rounded-lg bg-brand-gold text-brand-greenDark transition font-bold';
+        userLabel.innerText = 'الرقم الأكاديمي للطالبة:';
+        userInput.value = 'IQ-1446-089';
+        btnText.innerText = 'دخول صفحة الطالبة';
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      closeModal('loginModal');
+      quickRoleSwitch(academyData.activeModalLoginTab);
+      showToast(`تم تسجيل الدخول بنجاح بصلاحية (${getRoleArabicName(academyData.activeModalLoginTab)})`, 'success');
+    }
+
+    function getRoleArabicName(role) {
+      if (role === 'admin') return 'المدير العام';
+      if (role === 'teacher') return 'الأستاذة والمعلمة';
+      return 'الطالبة';
+    }
+
+    // --- Instant Role Switcher Function ---
+    function quickRoleSwitch(role) {
+      academyData.currentRole = role;
+      showSection('portalSection');
+      switchPortalRole(role);
+    }
+
+    function switchPortalRole(role) {
+      academyData.currentRole = role;
+      
+      const adminView = document.getElementById('adminPortalView');
+      const teacherView = document.getElementById('teacherPortalView');
+      const studentView = document.getElementById('studentPortalView');
+      const roleTitle = document.getElementById('portalRoleTitle');
+
+      const btnAdmin = document.getElementById('roleBtnAdmin');
+      const btnTeacher = document.getElementById('roleBtnTeacher');
+      const btnStudent = document.getElementById('roleBtnStudent');
+
+      // Reset all buttons style
+      [btnAdmin, btnTeacher, btnStudent].forEach(btn => {
+        btn.className = 'px-3.5 py-1.5 rounded-lg font-bold text-white hover:text-brand-gold transition';
+      });
+
+      // Hide all sub views
+      adminView.classList.add('hidden');
+      teacherView.classList.add('hidden');
+      studentView.classList.add('hidden');
+
+      if (role === 'admin') {
+        adminView.classList.remove('hidden');
+        btnAdmin.className = 'px-3.5 py-1.5 rounded-lg font-bold bg-brand-gold text-brand-greenDark shadow';
+        roleTitle.innerText = 'لوحة تحكم المدير العام للمقرأة';
+        renderAdminStudentsTable();
+        renderAdminAnnouncements();
+      } else if (role === 'teacher') {
+        teacherView.classList.remove('hidden');
+        btnTeacher.className = 'px-3.5 py-1.5 rounded-lg font-bold bg-brand-rose text-white shadow';
+        roleTitle.innerText = 'بوابة الأستاذة المشرفة: عائشة المطيري';
+      } else if (role === 'student') {
+        studentView.classList.remove('hidden');
+        btnStudent.className = 'px-3.5 py-1.5 rounded-lg font-bold bg-brand-greenLight text-white shadow';
+        roleTitle.innerText = 'بوابة الطالبة: أسماء بنت عبد الله الشريف';
+      }
+    }
+
+    // --- Admin Functions: Render Students Table ---
+    function renderAdminStudentsTable(filterText = '') {
+      const tbody = document.getElementById('adminStudentsTableBody');
+      tbody.innerHTML = '';
+
+      const filtered = academyData.students.filter(st => {
+        return st.name.includes(filterText) || st.group.includes(filterText) || st.id.includes(filterText);
+      });
+
+      document.getElementById('adminTotalStudents').innerText = `${academyData.students.length} طالبة`;
+      document.getElementById('adminTableCountLabel').innerText = `عرض ${filtered.length} من أصل ${academyData.students.length} طالبات`;
+
+      filtered.forEach((st, index) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-brand-cream/60 transition';
+        tr.innerHTML = `
+          <td class="p-3.5 font-bold text-neutral-900 flex items-center gap-2">
+            <div class="w-7 h-7 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center text-[10px]">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <span>${st.name}</span>
+          </td>
+          <td class="p-3.5 font-mono text-[11px] text-neutral-500">${st.id}</td>
+          <td class="p-3.5 text-neutral-700">${st.group}</td>
+          <td class="p-3.5 text-neutral-600">${st.teacher}</td>
+          <td class="p-3.5 font-bold text-brand-green">${st.juz}</td>
+          <td class="p-3.5">
+            <span class="bg-emerald-100 text-brand-green font-bold text-[10px] px-2 py-0.5 rounded-full">${st.status}</span>
+          </td>
+          <td class="p-3.5 text-center">
+            <div class="flex items-center justify-center gap-1.5">
+              <button onclick="inspectStudentCard('${st.name}', '${st.id}', '${st.group}', '${st.juz}', '${st.teacher}')" title="عرض بطاقة المسار" class="p-1.5 rounded bg-brand-sand text-brand-green hover:bg-brand-green hover:text-white transition">
+                <i class="fa-solid fa-id-card"></i>
+              </button>
+              <button onclick="deleteStudent(${index})" title="حذف الطالبة" class="p-1.5 rounded bg-rose-50 text-brand-rose hover:bg-brand-rose hover:text-white transition">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterAdminStudents() {
+      const q = document.getElementById('adminStudentSearch').value;
+      renderAdminStudentsTable(q);
+    }
+
+    function handleAddNewStudent(e) {
+      e.preventDefault();
+      const name = document.getElementById('newStudentName').value;
+      const id = document.getElementById('newStudentId').value;
+      const group = document.getElementById('newStudentGroup').value;
+      const teacher = document.getElementById('newStudentTeacher').value;
+      const juz = document.getElementById('newStudentJuz').value;
+
+      academyData.students.unshift({
+        id: id,
+        name: name,
+        group: group,
+        teacher: teacher,
+        juz: juz,
+        status: 'مسجلة حديثاً'
+      });
+
+      renderAdminStudentsTable();
+      closeModal('addStudentModal');
+      showToast(`تمت إضافة الطالبة (${name}) بنجاح للمنظومة`, 'success');
+      e.target.reset();
+    }
+
+    function deleteStudent(index) {
+      if (confirm('هل أنتِ متأكدة من حذف هذه الطالبة من المنظومة؟')) {
+        const deleted = academyData.students.splice(index, 1);
+        renderAdminStudentsTable();
+        showToast(`تم حذف الطالبة ${deleted[0]?.name}`, 'info');
+      }
+    }
+
+    function inspectStudentCard(name, id, group, juz, teacher) {
+      document.getElementById('cardNameInput').value = name;
+      document.getElementById('cardIdInput').value = id;
+      document.getElementById('cardGroupInput').value = group;
+      document.getElementById('cardTeacherInput').value = teacher;
+      updateCardPreview();
+      showSection('cardGeneratorSection');
+    }
+
+    // --- Admin Announcements ---
+    function renderAdminAnnouncements() {
+      const container = document.getElementById('adminAnnouncementsList');
+      if (!container) return;
+      container.innerHTML = '';
+
+      academyData.announcements.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'p-3.5 rounded-xl bg-brand-cream border border-brand-sand flex justify-between items-start gap-3';
+        div.innerHTML = `
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-xs text-neutral-800">${item.title}</span>
+              <span class="text-[9px] bg-amber-100 text-amber-900 font-bold px-1.5 py-0.5 rounded">${item.target}</span>
+            </div>
+            <p class="text-[11px] text-neutral-600 mt-1 leading-relaxed">${item.text}</p>
+            <span class="text-[10px] text-neutral-400 mt-1.5 block"><i class="fa-regular fa-clock ml-1"></i>${item.date}</span>
+          </div>
+          <button onclick="removeAnnouncement(${idx})" class="text-neutral-400 hover:text-brand-rose text-xs p-1">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function postAdminAnnouncement() {
+      const title = document.getElementById('announcementTitleInput').value.trim();
+      const target = document.getElementById('announcementTargetSelect').value;
+      const text = document.getElementById('announcementTextInput').value.trim();
+
+      if (!title || !text) {
+        showToast('يرجى ملء عنوان ونص الإعلان كاملاً', 'warning');
+        return;
+      }
+
+      academyData.announcements.unshift({
+        id: Date.now(),
+        title: title,
+        target: target,
+        date: 'الآن',
+        text: text
+      });
+
+      renderAdminAnnouncements();
+      document.getElementById('announcementTitleInput').value = '';
+      document.getElementById('announcementTextInput').value = '';
+      showToast('تم نشر الإعلان المركزي بنجاح لجميع المستخدمين', 'success');
+    }
+
+    function removeAnnouncement(idx) {
+      academyData.announcements.splice(idx, 1);
+      renderAdminAnnouncements();
+      showToast('تمت إزالة الإعلان', 'info');
+    }
+
+    // --- Journey Student Switcher ---
+    function switchJourneyStudent(val) {
+      const nameDisp = document.getElementById('journeyStudentNameDisplay');
+      const percentText = document.getElementById('journeyPercentText');
+      const bar = document.getElementById('journeyProgressBar');
+      const sessions = document.getElementById('journeySessionsCount');
+      const score = document.getElementById('journeyScoreGrade');
+      const juzCount = document.getElementById('journeyJuzCount');
+      const avatar = document.getElementById('journeyAvatarPreview');
+
+      if (val === '1') {
+        nameDisp.innerText = 'أسماء بنت عبد الله الشريف';
+        percentText.innerText = '60% (18 من 30 جزء)';
+        bar.style.width = '60%';
+        sessions.innerText = '142 جلسة';
+        score.innerText = '98.5% (ممتاز مرتفع)';
+        juzCount.innerText = '18 أجزاء';
+        avatar.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80';
+      } else if (val === '2') {
+        nameDisp.innerText = 'خديجة المنصور التميمي';
+        percentText.innerText = '100% (ختمت القرآن الكريم كاملاً)';
+        bar.style.width = '100%';
+        sessions.innerText = '280 جلسة';
+        score.innerText = '99.8% (إجازة بالسند)';
+        juzCount.innerText = '30 جزءاً (كامل المصحف)';
+        avatar.src = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80';
+      } else {
+        nameDisp.innerText = 'زينب بنت إبراهيم المري';
+        percentText.innerText = '16.6% (5 أجزاء من 30)';
+        bar.style.width = '16.6%';
+        sessions.innerText = '45 جلسة';
+        score.innerText = '96.0% (ممتاز)';
+        juzCount.innerText = '5 أجزاء (مسار الناشئة)';
+        avatar.src = 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80';
+      }
+      showToast('تم تحديث مسار الطالبة المحدد', 'info');
+    }
+
+    // --- Student Journey Card Dynamic Updates ---
+    function updateCardPreview() {
+      const name = document.getElementById('cardNameInput').value;
+      const id = document.getElementById('cardIdInput').value;
+      const group = document.getElementById('cardGroupInput').value;
+      const teacher = document.getElementById('cardTeacherInput').value;
+      const level = document.getElementById('cardLevelSelect').value;
+      const grade = document.getElementById('cardGradeInput').value;
+
+      document.getElementById('previewCardName').innerText = name || 'اسم الطالبة';
+      document.getElementById('previewCardIdBadge').innerText = id || 'IQ-000';
+      document.getElementById('previewCardGroup').innerText = group || 'فوج المقرأة';
+      document.getElementById('previewCardTeacher').innerText = `المشرفة: ${teacher}`;
+      document.getElementById('previewCardLevel').innerText = level;
+      document.getElementById('previewCardGrade').innerText = grade;
+    }
+
+    function changeCardTheme(theme) {
+      const card = document.getElementById('studentJourneyCardPrint');
+      card.classList.remove('border-brand-green', 'border-brand-gold', 'border-brand-rose');
+      if (theme === 'emerald') {
+        card.classList.add('border-brand-green');
+      } else if (theme === 'gold') {
+        card.classList.add('border-brand-gold');
+      } else if (theme === 'rose') {
+        card.classList.add('border-brand-rose');
+      }
+      showToast(`تم تطبيق سمة (${theme}) على البطاقة`, 'info');
+    }
+
+    function downloadCardAsImage() {
+      showToast('جارِ إعداد بطاقة الطالبة بجودة عالية للتنزيل كصورة...', 'info');
+      setTimeout(() => {
+        showToast('تم تجهيز البطاقة بنجاح، يمكنك الآن طباعتها أو حفظها', 'success');
+        window.print();
+      }, 700);
+    }
+
+    // --- Digital Library Filtering ---
+    function filterLibraryCategory(cat) {
+      document.querySelectorAll('.lib-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-green', 'text-white');
+        btn.classList.add('bg-white', 'text-neutral-700');
+      });
+      event.target.classList.add('bg-brand-green', 'text-white');
+      event.target.classList.remove('bg-white', 'text-neutral-700');
+
+      const cards = document.querySelectorAll('.lib-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function filterLibrary() {
+      const q = document.getElementById('librarySearchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.lib-card');
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(q)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    let isAudioPlaying = false;
+    function toggleAudioDemo() {
+      const btnText = document.getElementById('audioPlayText');
+      const icon = document.getElementById('audioPlayIcon');
+      if (!isAudioPlaying) {
+        isAudioPlaying = true;
+        btnText.innerText = 'إيقاف مؤقت';
+        icon.className = 'fa-solid fa-pause';
+        showToast('بدء تلاوة سورة مريم التعليمية (محاكاة صوتية)', 'info');
+      } else {
+        isAudioPlaying = false;
+        btnText.innerText = 'تشغيل التلاوة';
+        icon.className = 'fa-solid fa-play';
+        showToast('تم إيقاف التلاوة مؤقتاً', 'info');
+      }
+    }
+
+    // --- Toast Notification Helper ---
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toastNotification');
+      const msg = document.getElementById('toastMessage');
+      const icon = document.getElementById('toastIcon');
+
+      msg.innerText = message;
+      if (type === 'success') {
+        icon.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
+      } else if (type === 'warning') {
+        icon.innerHTML = '<i class="fa-solid fa-triangle-exclamation text-amber-400"></i>';
+      } else {
+        icon.innerHTML = '<i class="fa-solid fa-circle-info text-brand-gold"></i>';
+      }
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    // --- Initialization ---
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAdminStudentsTable();
+      renderAdminAnnouncements();
+      updateCardPreview();
+    });
+  </script>
+</body>
+</html>
